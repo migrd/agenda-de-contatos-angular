@@ -12,5 +12,6 @@ export class ListaContatosService {
 
   updateLista(nome: string, numero: number): void {
     this.lista.push(new Contato(nome, numero));
+    this.lista.sort((a, b) => a.nome.localeCompare(b.nome));
   }
 }
