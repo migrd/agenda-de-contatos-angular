@@ -124,3 +124,8 @@ body {
   border-color: #f6f1ff;
   color: #5526ab;
 }
+
+.menu-icon {
+  position: absolute;
+  right: 15px;
+}

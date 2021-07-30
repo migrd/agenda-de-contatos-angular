@@ -40,7 +40,7 @@
 
                   <div
                     *ngFor="let contato of list | filter:searchText"
-                    class="single-story"
+                    class="single-story bg-light"
                   >
                     <div class="story-dp unseen">
                       <i
@@ -52,8 +52,63 @@
                       <p class="name">{{ contato.nome }}</p>
                       <p class="time">{{ contato.numero }}</p>
                     </div>
-                    <!-- --------- -->
+                    <button
+                      type="button"
+                      class="btn btn-dark btn-sm menu-icon"
+                      data-bs-toggle="modal"
+                      data-bs-target="#opcoes"
+                    >
+                      <i
+                        class="bi bi-three-dots-vertical"
+                        style="font-size: 1.5rem;"
+                      ></i>
+                    </button>
+                    <!-- modal de opcoes -->
+                    <div
+                      class="modal fade"
+                      id="opcoes"
+                      tabindex="-1"
+                      aria-labelledby="opcoesLabel"
+                      aria-hidden="true"
+                    >
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="opcoesLabel">Opções</h5>
+                            <button
+                              type="button"
+                              class="btn-close"
+                              data-bs-dismiss="modal"
+                              aria-label="Close"
+                            ></button>
+                          </div>
+                          <div class="modal-body">
+                            <!-- modal content body-->
+                            <button type="button" class="btn btn-success mx-1">
+                              <i class="bi bi-telephone-fill"></i>
+                            </button>
+
+                            <button type="button" class="btn btn-primary mx-1">
+                              <i class="bi bi-chat-left-text-fill"></i>
+                            </button>
+                          </div>
+                          <div class="modal-footer">
+                            <button
+                              type="button"
+                              class="btn btn-danger"
+                              data-bs-dismiss="modal"
+                            >
+                              <i class="bi bi-trash-fill"></i></button
+                            ><!-- botao deletar-->
+                            <button type="button" class="btn btn-primary">
+                              <i class="bi bi-pencil-square"></i></button
+                            ><!-- botao editar-->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
+                  <!-- --------- -->
                 </div>
               </div>
             </div>
