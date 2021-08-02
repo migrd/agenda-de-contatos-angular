@@ -57,6 +57,7 @@
                       class="btn btn-dark btn-sm menu-icon"
                       data-bs-toggle="modal"
                       data-bs-target="#opcoes"
+                      (click)="this.contatoSelecionado = contato;"
                     >
                       <i
                         class="bi bi-three-dots-vertical"
@@ -71,10 +72,12 @@
                       aria-labelledby="opcoesLabel"
                       aria-hidden="true"
                     >
-                      <div class="modal-dialog">
+                      <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="opcoesLabel">Opções</h5>
+                            <h5 class="modal-title" id="opcoesLabel">
+                              {{contatoSelecionado.nome}}
+                            </h5>
                             <button
                               type="button"
                               class="btn-close"
@@ -85,12 +88,86 @@
                           <div class="modal-body">
                             <!-- modal content body-->
                             <button type="button" class="btn btn-success mx-1">
-                              <i class="bi bi-telephone-fill"></i>
-                            </button>
+                              <i class="bi bi-telephone-fill"></i></button
+                            ><!-- botao ligar-->
 
                             <button type="button" class="btn btn-primary mx-1">
-                              <i class="bi bi-chat-left-text-fill"></i>
-                            </button>
+                              <i class="bi bi-chat-left-text-fill"></i></button
+                            ><!-- botao mensagem-->
+                          </div>
+                          <div class="modal-footer">
+                            <button
+                              type="button"
+                              class="btn btn-danger"
+                              data-bs-dismiss="modal"
+                              (click)="this.lista.remover(this.contatoSelecionado);"
+                            >
+                              <i class="bi bi-trash-fill"></i></button
+                            ><!-- botao deletar-->
+                            <button
+                              type="button"
+                              class="btn btn-primary"
+                              data-bs-toggle="modal"
+                              data-bs-target="#editar"
+                            >
+                              <i class="bi bi-pencil-square"></i></button
+                            ><!-- botao editar-->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- modal editar-->
+                    <div
+                      class="modal fade"
+                      id="editar"
+                      tabindex="-1"
+                      aria-labelledby="editarLabel"
+                      aria-hidden="true"
+                    >
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="editarLabel">Editar</h5>
+                            <button
+                              type="button"
+                              class="btn-close"
+                              data-bs-dismiss="modal"
+                              aria-label="Close"
+                            ></button>
+                          </div>
+                          <div class="modal-body">
+                            <!-- modal content body-->
+                            <div class="container">
+                              <form
+                                class="d-flex flex-wrap justify-content-center"
+                              >
+                                <div class="form-floating mb-2 w-100">
+                                  <input
+                                    type="name"
+                                    class="form-control"
+                                    id="floatingInput"
+                                    name="nome"
+                                    placeholder="Nome"
+                                    value="{{ this.contatoSelecionado.nome }}"
+                                    #nome
+                                  />
+                                  <label for="floatingInput">Nome</label>
+                                </div>
+
+                                <div class="form-floating mb-2 w-100">
+                                  <input
+                                    type="number"
+                                    class="form-control"
+                                    id="floatingInput"
+                                    name="numero"
+                                    placeholder="Numero"
+                                    value="{{ this.contatoSelecionado.numero }}"
+                                    #numero
+                                  />
+                                  <label for="floatingInput">numero</label>
+                                </div>
+                              </form>
+                            </div>
                           </div>
                           <div class="modal-footer">
                             <button
@@ -98,17 +175,24 @@
                               class="btn btn-danger"
                               data-bs-dismiss="modal"
                             >
-                              <i class="bi bi-trash-fill"></i></button
-                            ><!-- botao deletar-->
-                            <button type="button" class="btn btn-primary">
-                              <i class="bi bi-pencil-square"></i></button
-                            ><!-- botao editar-->
+                              <i
+                                class="bi bi-arrow-left-circle-fill"
+                              ></i></button
+                            ><!-- botao cancelar edicao-->
+                            <button
+                              type="button"
+                              class="btn btn-primary"
+                              data-bs-dismiss="modal"
+                              (click)="this.lista.editar(this.contatoSelecionado,nome.value, numero.value)"
+                            >
+                              <i class="bi bi-check-circle-fill"></i></button
+                            ><!-- botao confirmar edicao-->
                           </div>
                         </div>
                       </div>
                     </div>
+                    <!-- --------- -->
                   </div>
-                  <!-- --------- -->
                 </div>
               </div>
             </div>

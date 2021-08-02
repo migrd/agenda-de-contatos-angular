@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit} from "@angular/core";
 
 import { ListaContatosService } from "../servicos/lista-contatos.service";
 
@@ -13,6 +13,7 @@ export class ContatosComponent implements OnInit {
   }
 
   private list: any = this.lista.lista;
+  private contatoSelecionado: any;
   private searchText: any;
 
   ngOnInit(): void {}
